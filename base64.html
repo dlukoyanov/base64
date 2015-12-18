@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .wrapper {
+            text-align: left;
+            padding-left:20%;
+            padding-right:20%;
+        }
+        .wrapper textarea{
+            width: 700px;          
+        }
+        .wrapper div{
+            padding-top: 20px;       
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper" ng-controller="base64Controller">
+    <h1>Base64 decoder/encoder</h1>
+    <label></label>
+    <textarea elastic ng-model="yourText" placeholder="Put your text or base64 here"></textarea>
+    <div class="enc" style="width: 76em; word-wrap: break-word;">{{combine(yourText)}}</div>
+</div>
+</body>
+</html>
