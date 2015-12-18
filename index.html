@@ -10,9 +10,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <style type="text/css">
-        .wrapper {
-           width: 76em; 
-        }
         .wrapper textarea{
            width: 100%;
            height:10em;   
@@ -27,7 +24,7 @@
     </style>
 </head>
 <body>
-    <div class="container wrapper" ng-controller="base64Controller">
+    <div class="container wrapper col-sd-12" ng-controller="base64Controller">
         <div class="page-header"><h1>Base64 decoder/encoder</h1></div>
         <textarea elastic ng-model="yourText" placeholder="Put your text or base64 here"></textarea>
         <div class="result">{{combine(yourText)}}</div>
