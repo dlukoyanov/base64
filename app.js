@@ -2,23 +2,32 @@ var app = angular.module('app', []);
 app.controller('base64Controller', [
     '$scope',
     function($scope) {
-    	function b64EncodeUnicode(str) {
-    		return (!str || 0 === str.length)?"":btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {return String.fromCharCode('0x' + p1);}));
-		}
+        function b64EncodeUnicode(str) {
+            return (!str || 0 === str.length)?"":btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {return String.fromCharCode('0x' + p1);}));
+        }
         function b64DecodeUnicode(str) {
             return (!str || 0 === str.length)?"":decodeURIComponent(escape(atob(str)));
         }
-		function b64DecodeUnicodeSafe(str) {
-			try{
-				return b64DecodeUnicode(str);
-			}catch(e){
-				return "";
-			}
-		}
-
-   		$scope.encode = function(text){return b64EncodeUnicode(text)};
-		$scope.decode = function(text){return b64DecodeUnicode(text)};
+        function b64DecodeUnicodeSafe(str) {
+            try{
+                return b64DecodeUnicode(str);
+            }catch(e){
+                return "";
+            }
+        }
+        function jsonPretty(str){
+            try{
+                obj = JSON.parse(str);
+                return JSON.stringify(obj, null, 4);
+            }catch(e){
+                return "";
+            }
+        }
+        $scope.encode = function(text){return b64EncodeUnicode(text)};
+        $scope.decode = function(text){return b64DecodeUnicode(text)};
         $scope.combine = function(text){
+            json = jsonPretty(text);
+            if(json != ""){return json}
             try{
                 return formatXml(b64DecodeUnicode(text));
             }catch(e){
